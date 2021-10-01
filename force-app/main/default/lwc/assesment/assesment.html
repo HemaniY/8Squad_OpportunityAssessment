@@ -1,0 +1,79 @@
+<template>
+    <lightning-card variant="narrow">
+        <lightning-layout multiple-rows="true" variant="narrow">
+        <lightning-layout-item padding="around-small" size="6">
+            <div>Is there an opportunity </div>
+            <table class= "slds-table slds-table_bordered slds-table_col-bordered" >
+                <tr> 
+                    <th> Criteria</th>
+                    <th>Evaluation</th>
+                </tr>
+              
+                    <tr >
+                        <td>
+                           
+                        </td>
+    
+                        
+                    </tr>
+              
+                    
+               
+            </table>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6">
+        <div>Can We Compete</div>
+        <table class= "slds-table slds-table_bordered slds-table_col-bordered">
+            <tr> 
+                <th> Criteria</th>
+                <th>Evaluation</th>
+            </tr>
+            <tr> 
+                <td></td>
+
+                <td></td>
+
+                <td></td>
+            </tr>
+        </table>
+    </lightning-layout-item>
+
+    <lightning-layout-item padding="around-small" size="6">
+        <div>Can We Win</div>
+        <table class= "slds-table slds-table_bordered slds-table_col-bordered">
+            <tr> 
+                <th> Criteria</th>
+                <th>Evaluation</th>
+            </tr>
+             <template for:each={fields1} for:item="obj">
+                <tr key={obj}>
+                     <td> {obj}</td>
+
+                     <td>{obj}</td>
+
+                     <td>{obj}</td>
+            </tr>
+        </template>
+        </table>
+    </lightning-layout-item>
+
+    <lightning-layout-item padding="around-small" size="6">
+        <div>Is it worth winning</div>
+        <table class= "slds-table slds-table_bordered slds-table_col-bordered">
+            <tr> 
+                <th> Criteria</th>
+                <th>Evaluation</th>
+            </tr>
+            <tr> 
+                <td></td>
+
+                <td></td>
+
+                <td></td>
+            </tr>
+        </table>
+    </lightning-layout-item>
+
+        </lightning-layout>
+    </lightning-card>
+</template>

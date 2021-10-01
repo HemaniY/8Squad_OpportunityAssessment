@@ -1,0 +1,180 @@
+
+
+<template>
+    <lightning-card title="OPPORTUNITY ASSESSMENT" variant="narrow">
+        <lightning-layout multiple-rows="true" variant="narrow">
+        <lightning-layout-item padding="around-small" size="6">
+            <div style="color: rgb(53, 140, 245);padding-bottom:10px;">IS THERE AN OPPORTUNITY</div>
+            <table class= "slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right">
+                <thead>
+                <tr> 
+                    <th> 
+                        <div class="slds-truncate"> Criteria
+
+                        </div>
+                        
+                    </th>
+                    <th> <div class="slds-truncate"> Evaluation
+
+                    </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={table} for:item="obj">
+                    <tr key={obj.SNO}>
+                         <td> {obj.SNO}</td>
+                       
+                        <td> <div class="slds-truncate">
+                            {obj.Field}
+                        </div>
+                    </td>
+                    <td>
+                        <table class= "slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right"> 
+                            <tbody>
+                               <template for:each={obj.Option} for:item="op">
+                                  <tr key={op.option}>
+                                        
+                                        <td class={op.color} > {op.option}
+                                        </td>
+                                        <td class={op.color}>
+                                            <!-- sldsValidatorIgnoreNextLine -->
+                                            <input type="radio" checked={op.checked}  name={op.FieldApiName} data-field="fieldoption" value={op.option} onclick={Selected}/>
+                                        </td>
+                                    </tr>
+                                </template>
+                               
+                            </tbody>
+                        </table>
+                    </td>
+                        
+                </tr>
+            </template>
+            </tbody>
+            </table>
+        </lightning-layout-item>
+
+        <lightning-layout-item padding="around-small" size="6">
+            <div style="color: rgb(53, 140, 245);padding-bottom:10px;">CAN WE COMPETE</div>
+        <table class= "slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right">
+            <thead>
+            <tr> 
+                <th> Criteria</th>
+                <th>Evaluation</th>
+            </tr>
+            </thead>
+            <tbody>
+            <template for:each={table2} for:item="obj2">
+                <tr key={obj2.Field}>
+                <td>{obj2.SNO}</td>
+
+                <td> {obj2.Field}</td>
+
+                <td>
+                    <table class= "slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right"> 
+                    <tbody>
+                       <template for:each={obj2.Option} for:item="op2">
+                        <tr key={op2.option}>
+                                        
+                            <td class={op2.color}>
+                              {op2.option}  
+                            </td>
+                            <td class={op2.color}>
+                                <!-- sldsValidatorIgnoreNextLine -->
+                                <input type="radio" checked={op2.checked}  name={op2.FieldApiName} value={op2.option} onclick={Selected}/>
+                            </td>
+                        </tr>
+                    </template>
+                   
+                </tbody>
+            </table>
+
+                </td>
+            </tr>
+            </template>
+        </tbody>
+        </table>
+    </lightning-layout-item>
+
+    <lightning-layout-item padding="around-small" size="6">
+        <div style="color: rgb(53, 140, 245);padding-bottom:10px;">CAN WE WIN</div>
+        <table class= "slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right">
+            <thead>
+            <tr> 
+                <th> Criteria</th>
+                <th>Evaluation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <template for:each={table3} for:item="obj3">
+                <tr key={obj3.Field}>
+                <td>{obj3.SNO}</td>
+
+                <td>{obj3.Field}</td>
+
+                <td> 
+                    <table class= "slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right"> 
+                    <tbody>
+                       <template for:each={obj3.Option} for:item="op3">
+                        <tr key={op3.option}>
+                            <td class={op3.color}>
+                                {op3.option}  
+                              </td>
+                              <td class={op3.color}>
+                                  <!-- sldsValidatorIgnoreNextLine -->
+                                  <input type="radio" checked={op3.checked}  name={op3.FieldApiName} value={op3.option} onclick={Selected}/>
+                              </td>
+                          </tr>
+                      </template>
+                     
+                  </tbody>
+              </table>
+                </td>
+            </tr>
+            </template>
+        </tbody>
+        </table>
+    </lightning-layout-item>
+
+    <lightning-layout-item padding="around-small" size="6">
+        <div style="color: rgb(53, 140, 245);padding-bottom:10px;">IS IT WORTH WINNING</div>
+        <table class= "slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right">
+            <thead>
+            <tr> 
+                <th> Criteria</th>
+                <th>Evaluation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <template for:each={table4} for:item="obj4">
+                <tr key={obj4.Field}>
+                <td>{obj4.SNO}</td>
+
+                <td>{obj4.Field}</td>
+
+                <td>
+                    <table class= "slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right"> 
+                    <tbody>
+                       <template for:each={obj4.Option} for:item="op4">
+                        <tr key={op4.option}>
+                            <td class={op4.color} data-field="fieldoption">
+                                {op4.option}  
+                              </td>
+                              <td class={op4.color}>
+                                  <!-- sldsValidatorIgnoreNextLine -->
+                                  <input type="radio" checked={op4.checked}  name={op4.FieldApiName} value={op4.option} onclick={Selected}/>
+                              </td>
+                          </tr>
+                      </template>
+                    </tbody>
+                </table>
+                </td>
+            </tr>
+            </template>
+        </tbody>
+        </table>
+    </lightning-layout-item>
+
+        </lightning-layout>
+    </lightning-card>
+</template>
