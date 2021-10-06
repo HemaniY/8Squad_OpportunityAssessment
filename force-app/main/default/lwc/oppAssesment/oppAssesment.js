@@ -1,4 +1,4 @@
-import { LightningElement, wire, api } from 'lwc';
+import { LightningElement, wire, api, track } from 'lwc';
 import { getObjectInfo, getPicklistValuesByRecordType} from 'lightning/uiObjectInfoApi';
 import { getRecord, updateRecord} from 'lightning/uiRecordApi';
 import Opportunity from '@salesforce/schema/Opportunity';
@@ -35,93 +35,284 @@ const fieldNameApi4= [
     
 export default class OppAssesment extends LightningElement {
 
-            table=[];
-            table2=[];
-            table3=[];
-            table4=[];
-             sCount=0;
-
- 
+          @track table1=[];
+          @track table2=[];
+          @track table3=[];
+          @track table4=[];
+            sCount=0;
             optionsForField=[];
 
             @api recordId;
+            getRecordId;
+
             oppInfoData;
-
             oppRecordData;
-            getRecrecordId;
-             error;
+            error;
    
-            @wire (getObjectInfo,{objectApiName:Opportunity}) opportunityInfo({error,data})
-            {
-         
-            if(data){
-                this.oppInfoData= data;
+             labelColor="";
 
-       } else if(error){
-            this.error = 'Unknown error';
-            if (Array.isArray(error.body)) {
-                this.error = error.body.map(e => e.message).join(', ');
-            } else if (typeof error.body.message === 'string') {
-                this.error = error.body.message;
+    @wire(getObjectInfo, { objectApiName: Opportunity }) opportunityInfo({ error, data }) {
+                if(data) {
+                    this.oppInfoData= data;
+                } else if(error){
+                    this.handleError(error);
+                }
             }
-            this.dispatchEvent(
-                new ShowToastEvent({
-                    title: 'Error loading opportunity',
-                    message,
-                    variant: 'error',
-                }),
-            );
-        }
-        
-
-    }
    
     
-    @wire(getRecord,{recordId:'$recordId', fields:allFields})recordWired({error,data})
-    {
-        if(data){
-          
-            this.oppRecordData= data;
-            
-            this.getRecrecordId= data.recordTypeId;
-            // console.log(this.getRecrecordId)
-        
-            
-        } else if(error){
-            this.error = 'Unknown error';
-            if (Array.isArray(error.body)) {
-                this.error = error.body.map(e => e.message).join(', ');
-            } else if (typeof error.body.message === 'string') {
-                this.error = error.body.message;
+    @wire(getRecord, { recordId: '$recordId', fields: allFields }) recordWired({ error, data })
+            {
+                if(data)
+                {
+                    this.oppRecordData= data;
+                    this.getRecordId= data.recordTypeId;
+                       
+                } 
+                else if(error)
+                {
+                    this.handleError(error);
+                }
             }
-            this.dispatchEvent(
-                new ShowToastEvent({
-                    title: 'Error loading opportunity',
-                    message,
-                    variant: 'error',
-                }),
-            );
-        }
-    }
-        @wire(getPicklistValuesByRecordType, { objectApiName: Opportunity, recordTypeId:'$getRecrecordId' })picklistsValue({error,data})
-        {
-            
 
-        if(data){
-           // console.log("2");
-            this.optionsForField= this.fieldPick(data.picklistFieldValues); 
-        
-            this.table=this.tableData(this.oppInfoData,fieldNameApi1);
-     
-            this.table2= this.tableData(this.oppInfoData,fieldNameApi2);
-            this.table3= this.tableData(this.oppInfoData,fieldNameApi3);
-            this.table4=this.tableData(this.oppInfoData,fieldNameApi4);
-         //   console.log( this.table4);
-           
+
+    @wire(getPicklistValuesByRecordType, { objectApiName: Opportunity, recordTypeId: '$getRecordId' }) picklistsValue({ error, data })
+            {
+                if(data)
+                {
+                    console.log(data.picklistFieldValues);
+                    this.optionsForField= this.pickFieldValue(data.picklistFieldValues); 
+                    console.log(this.optionsForField);
+                    this.table1=this.tableData(this.oppInfoData,fieldNameApi1);
+                    this.table2= this.tableData(this.oppInfoData,fieldNameApi2);
+                    this.table3= this.tableData(this.oppInfoData,fieldNameApi3);
+                    this.table4=this.tableData(this.oppInfoData,fieldNameApi4);
+                 }
+                    else if(error)
+                    {
+                        this.handleError(error);
+                       }
+              }
+                // Getting fields with their picklist values
+               
+    pickFieldValue(picklistValues)
+                {
+                    const pickfield = [];
             
+                    Object.keys(picklistValues).forEach((picklist) => {
+                        pickfield.push({
+                            label: picklist,
+                            items: picklistValues[picklist].values
+                        });
+                    });
+                    return pickfield;
+                    
+                } 
+
+    
+    tableData(data1, fieldApi)
+             {
+                        
+                let fieldName;
+                let data=[];
+                let isChecked= false;
+                let fieldValueOptions=[];
+                let Currentval;
+                let fieldN;
+
+                 for(let k in fieldApi)
+                 {
+                     fieldN= fieldApi[k].replace('Opportunity.','');
+                 
+                    // Getting the fields value
+                    Currentval = this.oppRecordData.fields[fieldN].value;
+
+                    this.optionsForField.forEach(element => {
+                         
+                        // finding the field
+                        if(fieldN== element.label)
+                        {      
+                            // For each field assignig the 3 values
+                            fieldValueOptions= element.items;
+                            let option=[];
+
+                            fieldValueOptions.forEach(el=>{
+
+                            // let labelColor="";
+                            
+                            
+                            if(Currentval==el.value)
+                            {
+                                isChecked=true;
+                            }
+                            else
+                                {
+                                isChecked=false;
+                                                        
+                                }
+                                
+                                // Assigning the label color according to the value
+                                if(isChecked==true)
+                                {
+                                    this.labelColor= this.colors(el.label);
+                                    option.push({
+                                        color:this.labelColor, 
+                                        FieldApiName:fieldN,
+                                        option:el.label,
+                                        checked:isChecked
+                                        })
+                                } else{
+                                    option.push({
+                                        color:'default', 
+                                        FieldApiName:fieldN,
+                                        option:el.label,
+                                        checked:isChecked
+                                        })
+                                }
+
+                                 })
+           
+          
+                                fieldName= data1.fields[fieldN].label;
+                                this.sCount= this.sCount+1;
+                                   
+                                // contains the field label, 3 options,colour for checked option
+                            data.push({
+                                            FieldApiName:fieldN,
+                                            SNO:this.sCount,
+                                            Field:fieldName,
+                                            Option:option
+                                            });
+                         }
+        
+                     })
+                              
+                } 
+                        
+                return data;
+             }   
+           
+    
+    Selected(event) {
+     
+                    const fields={};
+                    const datetime= new Date();
+
+                    var ApiFieldName=event.target.name;
+                    fields[ApiFieldName]= event.target.value;
+
+                    fields['Id']= this.recordId;
+                    fields['TAS_Last_Modified_Date__c']= datetime.toISOString();;
+                    
+                    
+          
+                 const recordInput= {fields};
+
+                    //  updateRecords(fields).then(()=>{
+                    //      console.log('Updated');
+                    //  }
+                    //  )
+                        updateRecord(recordInput).then(()=>{
+                        
+                            // new CustomEvent('recordchange')
+                            this.dispatchEvent(
+                                new ShowToastEvent({
+                                    title: 'Success',
+                                    message: 'Opportunity updated',
+                                    variant: 'success'
+                                })
+                            );
+                      })
+
+                        .catch(error => {
+                            this.dispatchEvent(
+                                new ShowToastEvent({
+                                    title: 'Error creating record',
+                                    message: error.body.message,
+                                    variant: 'error'
+                                })
+                            );
+                        });
+        
+                        this.table1.forEach(element => {
+                            if (element.FieldApiName == event.target.name) {
+                               
+                                this.changeColorOnClick(element.Option,event);
+                            
+                            }
+                        });
+        
+                        this.table2.forEach(element => {
+                            if (element.FieldApiName == event.target.name) {
+
+                                this.changeColorOnClick(element.Option,event);
+                               
+                            }
+                        });
+        
+                        this.table3.forEach(element => {
+                            if (element.FieldApiName == event.target.name) {
+
+                                this.changeColorOnClick(element.Option,event);
+                                
+                            }
+                        });
+        
+        
+                        this.table4.forEach(element => {
+                            if (element.FieldApiName == event.target.name) {
+
+                                this.changeColorOnClick(element.Option, event);
+                               
+                            }
+                                });
+                    }
+   
+   
+    colors(color)
+        {
+                    if(color=='Defined'||color=='Strong'||color=='Yes'||color=='High'||color=='Good')
+                    { 
+                        return'green';
+                       
+                   
+                    }
+                    else if(color=='Not Defined'||color=='Weak'||color=='Low'||color=='Poor' ||color=='No')
+                    {
+                        
+                        return'red';
+                         
+                    }
+                    else if(color=='Unsure'){
+                        // this.template.querySelector('[data-field="fieldoption"]').class="yellow";
+                    return 'yellow';
+                
+                    }
         }
-        else if(error){
-            this.error = 'Unknown error';
+  
+    
+    changeColorOnClick(option, event) {
+        option.forEach(element1 => {
+            // console.log(element1.option);
+            element1.color = 'default';
+            element1.checked = false;
+            if (element1.option == event.target.value) {
+                
+                // console.log(element1.color);
+                console.log(element1.checked);
+                element1.checked = event.target.checked;
+                element1.color = this.colors(event.target.value);
+                //  element1.checked = event.target.checked;
+                console.log(element1.color);
+                console.log(element1.checked);
+
+            } 
+          });
+    
+}
+
+    
+    handleError(error) {
+        this.error = 'Unknown error';
                     if (Array.isArray(error.body)) {
                         this.error = error.body.map(e => e.message).join(', ');
                     } else if (typeof error.body.message === 'string') {
@@ -134,179 +325,6 @@ export default class OppAssesment extends LightningElement {
                             variant: 'error',
                         }),
                     );
-
-        }
-        }
-
-    fieldPick(picklistValues) {
-        const pickfield = [];
-    // let options=[];
-        Object.keys(picklistValues).forEach((picklist) => {
-            pickfield.push({
-                label: picklist,
-                items: picklistValues[picklist].values
-            });
-        });
-        return pickfield;
-        
-    } 
-
-
-            tableData(data1,fieldApi)
-             {
-                        
-                        let fieldName;
-                        var data=[];
-                        let isChecked= false;
-                         var op=[];
-                        
-                        for(let k in fieldApi)
-                         {
-                        
-                           
-                                // let Val = getFieldValue(this.oppRecordData,fieldApi[k]);
-                                
-                                let fieldN= fieldApi[k].replace('Opportunity.','');
-                               // console.log(this.oppRecordData.fields[fieldN].value);
-                                let Val = this.oppRecordData.fields[fieldN].value;
-                                this.optionsForField.forEach(element => {
-                                
-                                if(fieldN== element.label)
-                                    {      
-
-                                        op= element.items;
-                                    
-                                        let option=[];
-                                        op.forEach(el=>{
-                                            let labelColor="";
-                                            
-                                                if(Val==el.value)
-                                                {
-                                                    isChecked=true;
-                                                    
-                                                  
-                                                }
-                                                    else
-                                                {
-                                                    isChecked=false;
-                                                    
-                                                }
-                                                
-                                                if(isChecked==true){
-                                                    labelColor= this.colors(el.label);
-                                                }
-                                          option.push({
-                                                color:labelColor, 
-                                                FieldApiName:fieldN,
-                                                option:el.label,
-                                                checked:isChecked
-                                            })
-          
-                                        })
-           
-          
-                                        fieldName= data1.fields[fieldN].label;
-                                        this.sCount= this.sCount+1;
-                                    
-                                            data.push(
-                                            {
-                                            SNO:this.sCount,
-                                            Field:fieldName,
-                                            Option:option
-                                            });
-           
-                                    }
-        
-                                 })
-                                //  this.colors(fieldN);
-                         } 
-                        
-                                return data;
-                }   
-
-        Selected(event)
-        {
-           let col= this.colors(event.target.value);
-            let ex =this.template.querySelectorAll('[data-field="fieldoption"]');
-            //  console.log(ex);
-            const fields={};
-         
-            var ApiFieldName=event.target.name;
-           
-            fields['Id']= this.recordId;
-          
-            const datetime= new Date();
-            fields['TAS_Last_Modified_Date__c']= datetime.toISOString();;
-          fields[ApiFieldName]= event.target.value;
-            
-          
-            const recordInput= {fields};
-
-        //  updateRecords(fields).then(()=>{
-        //      console.log('Updated');
-        //  }
-        //  )
-            updateRecord(recordInput).then(()=>{
-               
-                // new CustomEvent('recordchange')
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Success',
-                        message: 'Opportunity updated',
-                        variant: 'success'
-                    })
-                );
-
-              
-             
-           
-            }) 
-            // .then(() => this.refreshPage())
-
-            .catch(error => {
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Error creating record',
-                        message: error.body.message,
-                        variant: 'error'
-                    })
-                );
-            });
-            
-          
-        }
-   
-
-
-         colors(color){
-            
-            // console.log(color);
-             if(color=='Defined'||color=='Strong'||color=='Yes'||color=='High'||color=='Good')
-             { 
-                return'green';
-                //  this.template.querySelector('[data-field="fieldoption"]').class="green";
-               // document.querySelector("tr").style.backgroundColor="green";
-            }
-            else if(color=='Not Defined'||color=='Weak'||color=='Low'||color=='Poor' ||color=='No')
-            {
-                // this.template.querySelector('[data-field="fieldoption"]').class="red";
-                return'red';
-                // document.querySelector("tr").style.backgroundColor="red";
-            }
-            else if(color=='Unsure'){
-                // this.template.querySelector('[data-field="fieldoption"]').class="yellow";
-             return 'yellow';
-          
-            }
-           
-            
-           
-        }
-
-        refreshPage() {
-            window.location.reload();
-          }
-
-
-
     }
+
+}

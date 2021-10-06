@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                <template for:each={table} for:item="obj">
+                <template for:each={table1} for:item="obj">
                     <tr key={obj.SNO}>
                          <td> {obj.SNO}</td>
                        
@@ -33,13 +33,12 @@
                         <table class= "slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right"> 
                             <tbody>
                                <template for:each={obj.Option} for:item="op">
-                                  <tr key={op.option}>
+                                  <tr key={op.option} class={op.color}>
                                         
-                                        <td class={op.color} > {op.option}
-                                        </td>
-                                        <td class={op.color}>
+                                        <td > {op.option} </td>
+                                        <td >
                                             <!-- sldsValidatorIgnoreNextLine -->
-                                            <input type="radio" checked={op.checked}  name={op.FieldApiName} data-field="fieldoption" value={op.option} onclick={Selected}/>
+                                            <input type="radio" checked={op.checked}  name={op.FieldApiName} value={op.option} onclick={Selected}/>
                                         </td>
                                     </tr>
                                 </template>
@@ -74,12 +73,12 @@
                     <table class= "slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right"> 
                     <tbody>
                        <template for:each={obj2.Option} for:item="op2">
-                        <tr key={op2.option}>
+                        <tr key={op2.option} class={op2.color}>
                                         
-                            <td class={op2.color}>
+                            <td>
                               {op2.option}  
                             </td>
-                            <td class={op2.color}>
+                            <td>
                                 <!-- sldsValidatorIgnoreNextLine -->
                                 <input type="radio" checked={op2.checked}  name={op2.FieldApiName} value={op2.option} onclick={Selected}/>
                             </td>
@@ -116,11 +115,11 @@
                     <table class= "slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right"> 
                     <tbody>
                        <template for:each={obj3.Option} for:item="op3">
-                        <tr key={op3.option}>
-                            <td class={op3.color}>
+                        <tr key={op3.option} class={op3.color}>
+                            <td>
                                 {op3.option}  
                               </td>
-                              <td class={op3.color}>
+                              <td>
                                   <!-- sldsValidatorIgnoreNextLine -->
                                   <input type="radio" checked={op3.checked}  name={op3.FieldApiName} value={op3.option} onclick={Selected}/>
                               </td>
@@ -156,11 +155,11 @@
                     <table class= "slds-table slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right"> 
                     <tbody>
                        <template for:each={obj4.Option} for:item="op4">
-                        <tr key={op4.option}>
-                            <td class={op4.color} data-field="fieldoption">
+                        <tr key={op4.option} class={op4.color}  data-field="fieldoption">
+                            <td >
                                 {op4.option}  
                               </td>
-                              <td class={op4.color}>
+                              <td>
                                   <!-- sldsValidatorIgnoreNextLine -->
                                   <input type="radio" checked={op4.checked}  name={op4.FieldApiName} value={op4.option} onclick={Selected}/>
                               </td>
