@@ -1,0 +1,67 @@
+{
+  "apiName": "Opportunity",
+  "childRelationships": {},
+  "eTag": "35f2effe0a85913b45011ae4e7dae39f",
+  "fields": {
+    "Customer_Application_or_Project__c": {
+      "label": "Customer Application or Project"
+    },
+    "Customers_Business_Profile__c": {
+      "label": "Customers Business Profile"
+    },
+    "Customers_Financial_Condition__c": {
+      "label": "Customers Financial Condition"
+    },
+    "Access_to_Fund__c": {
+      "label": "Acces to Fund"
+    },
+    "Compelling_Event__c": {
+      "label": "Compelling Event"
+    },
+    "Formal_Decision_Criteria__c": {
+      "label": "Formal Decision Criteria"
+    },
+    "Solution_Fit__c": {
+      "label": "Solution Fit"
+    },
+    "Sales_Resource_Requirement__c": {
+      "label": "Sales Resource Requirement"
+    },
+    "Current_Relationship__c": {
+      "label": "Current Relationship"
+    },
+    "Unique_Business_Value__c": {
+      "label": "Unique Business Value"
+    },
+    "Inside_Support__c": {
+      "label": "Inside Support"
+    },
+    "Executive_Credibility__c": {
+      "label": "Executive Credibility"
+    },
+    "Cultural_Fit__c": {
+      "label": "Cultural Fit"
+    },
+    "Informal_Decision_Criteria__c": {
+      "label": "Informal Decision Criteria"
+    },
+    "Political_Alignment__c": {
+      "label": "Political Alignment"
+    },
+    "Short_Term_Revenue__c": {
+      "label": "Short Term Revenue"
+    },
+    "Future_Revenue__c": {
+      "label": "Future Revenue"
+    },
+    "Profitability__c": {
+      "label": "Profitability"
+    },
+    "Degree_of_Risk__c": {
+      "label": "Degree of Risk"
+    },
+    "Strategic_Value__c": {
+      "label": "Strategic Value"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "apiName": "Opportunity",
+  "childRelationships": {},
+  "eTag": "35f2effe0a85913b45011ae4e7dae39f",
+  "fields": {
+    "Customer_Application_or_Project__c": {
+      "displayValue": null,
+      "value": "Unsure"
+    },
+    "Customers_Business_Profile__c": {
+      "displayValue": null,
+      "value": "Strong"
+    },
+    "Customers_Financial_Condition__c": {
+      "displayValue": null,
+      "value": "Weak"
+    },
+    "Access_to_Fund__c": {
+      "displayValue": null,
+      "value": "Yes"
+    },
+    "Compelling_Event__c": {
+      "displayValue": null,
+      "value": "Unsure"
+    },
+    "Formal_Decision_Criteria__c": {
+      "displayValue": null,
+      "value": "Defined"
+    },
+    "Solution_Fit__c": {
+      "displayValue": null,
+      "value": "Good"
+    },
+    "Sales_Resource_Requirement__c": {
+      "displayValue": null,
+      "value": "Unsure"
+    },
+    "Current_Relationship__c": {
+      "displayValue": null,
+      "value": "Strong"
+    },
+    "Unique_Business_Value__c": {
+      "displayValue": null,
+      "value": "Strong"
+    },
+    "Inside_Support__c": {
+      "displayValue": null,
+      "value": "Not Defined"
+    },
+    "Executive_Credibility__c": {
+      "displayValue": null,
+      "value": "Unsure"
+    },
+    "Cultural_Fit__c": {
+      "displayValue": null,
+      "value": "Good"
+    },
+    "Informal_Decision_Criteria__c": {
+      "displayValue": null,
+      "value": "Unsure"
+    },
+    "Political_Alignment__c": {
+      "displayValue": null,
+      "value": "Unsure"
+    },
+    "Short_Term_Revenue__c": {
+      "displayValue": null,
+      "value": "High"
+    },
+    "Future_Revenue__c": {
+      "displayValue": null,
+      "value": "Low"
+    },
+    "Profitability__c": {
+      "displayValue": null,
+      "value": "Unsure"
+    },
+    "Degree_of_Risk__c": {
+      "displayValue": null,
+      "value": "Low"
+    },
+    "Strategic_Value__c": {
+      "displayValue": null,
+      "value": "Yes"
+    }
+  },
+  "id": "005o0000000KEEUAA4",
+  "recordTypeId": "01290000000ox9ZAAQ"
+}
