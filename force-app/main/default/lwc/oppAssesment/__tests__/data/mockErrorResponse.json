@@ -1,0 +1,9 @@
+{
+  "body": {
+    "message": [{ "message": "Not found" }]
+  },
+  "ok": false,
+  "status": 404,
+  "statusText": "NotFound",
+  "headers": {}
+}

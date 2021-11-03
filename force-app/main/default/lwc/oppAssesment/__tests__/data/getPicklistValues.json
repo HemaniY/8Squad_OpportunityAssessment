@@ -1,0 +1,324 @@
+{
+  "picklistFieldValues": {
+    "Access_to_Fund__c": {
+      "values": [
+        {
+          "label": "Yes",
+          "value": "Yes"
+        },
+        {
+          "label": "No",
+          "value": "No"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Compelling_Event__c": {
+      "values": [
+        {
+          "label": "Defined",
+          "value": "Defined"
+        },
+        {
+          "label": "Not Defined",
+          "value": "Not Defined"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Customer_Application_or_Project__c": {
+      "values": [
+        {
+          "label": "Defined",
+          "value": "Defined"
+        },
+        {
+          "label": "Not Defined",
+          "value": "Not Defined"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Cultural_Fit__c": {
+      "values": [
+        {
+          "label": "Good",
+          "value": "Good"
+        },
+        {
+          "label": "Poor",
+          "value": "Poor"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Current_Relationship__c": {
+      "values": [
+        {
+          "label": "Strong",
+          "value": "Strong"
+        },
+        {
+          "label": "Weak",
+          "value": "Weak"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Customers_Business_Profile__c": {
+      "values": [
+        {
+          "label": "Strong",
+          "value": "Strong"
+        },
+        {
+          "label": "Weak",
+          "value": "Weak"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Customers_Financial_Condition__c": {
+      "values": [
+        {
+          "label": "Strong",
+          "value": "Strong"
+        },
+        {
+          "label": "Weak",
+          "value": "Weak"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Degree_of_Risk__c": {
+      "values": [
+        {
+          "label": "High",
+          "value": "High"
+        },
+        {
+          "label": "Low",
+          "value": "Low"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Executive_Credibility__c": {
+      "values": [
+        {
+          "label": "Strong",
+          "value": "Strong"
+        },
+        {
+          "label": "Weak",
+          "value": "Weak"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Formal_Decision_Criteria__c": {
+      "values": [
+        {
+          "label": "Defined",
+          "value": "Defined"
+        },
+        {
+          "label": "Not Defined",
+          "value": "Not Defined"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Future_Revenue__c": {
+      "values": [
+        {
+          "label": "High",
+          "value": "High"
+        },
+        {
+          "label": "Low",
+          "value": "Low"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Informal_Decision_Criteria__c": {
+      "values": [
+        {
+          "label": "Defined",
+          "value": "Defined"
+        },
+        {
+          "label": "Not Defined",
+          "value": "Not Defined"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Inside_Support__c": {
+      "values": [
+        {
+          "label": "Strong",
+          "value": "Strong"
+        },
+        {
+          "label": "Weak",
+          "value": "Weak"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Political_Alignment__c": {
+      "values": [
+        {
+          "label": "Strong",
+          "value": "Strong"
+        },
+        {
+          "label": "Weak",
+          "value": "Weak"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Profitability__c": {
+      "values": [
+        {
+          "label": "High",
+          "value": "High"
+        },
+        {
+          "label": "Low",
+          "value": "Low"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Sales_Resource_Requirement__c": {
+      "values": [
+        {
+          "label": "High",
+          "value": "High"
+        },
+        {
+          "label": "Low",
+          "value": "Low"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Short_Term_Revenue__c": {
+      "values": [
+        {
+          "label": "High",
+          "value": "High"
+        },
+        {
+          "label": "Low",
+          "value": "Low"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Solution_Fit__c": {
+      "values": [
+        {
+          "label": "Good",
+          "value": "Good"
+        },
+        {
+          "label": "Poor",
+          "value": "Poor"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Strategic_Value__c": {
+      "values": [
+        {
+          "label": "Yes",
+          "value": "Yes"
+        },
+        {
+          "label": "No",
+          "value": "No"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    },
+    "Unique_Business_Value__c": {
+      "values": [
+        {
+          "label": "Strong",
+          "value": "Strong"
+        },
+        {
+          "label": "Weak",
+          "value": "Weak"
+        },
+        {
+          "label": "Unsure",
+          "value": "Unsure"
+        }
+      ]
+    }
+  }
+}

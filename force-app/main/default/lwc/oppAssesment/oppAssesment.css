@@ -1,9 +1,30 @@
-.red{
-    background-color: red;
+.red {
+  background-color: #e03531;
+  color: white;
 }
-.green{
-    background-color: green;
+.green {
+  background-color: #51b364;
+  color: white;
 }
-.yellow{
-    background-color: yellow;
+.yellow {
+  background-color: #f0bd27;
+  color: white;
+}
+.borders {
+  border: 1px solid rgb(208, 206, 206);
+  border-collapse: collapse;
+}
+
+.padding {
+  padding: 0.5rem 0.5rem;
+}
+
+.slds-border_bottom input {
+  margin: 5px;
+}
+.slds-border_bottom {
+  max-width: 60px;
+}
+.tableWidth {
+  width: 550px;
 }

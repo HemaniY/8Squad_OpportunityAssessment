@@ -110,7 +110,7 @@ export default class OppAssesment extends LightningElement {
     if (data) {
       console.log(data.picklistFieldValues);
       this.optionsForField = this.pickFieldValue(data.picklistFieldValues);
-      console.log(this.optionsForField);
+      // console.log(this.optionsForField);
       this.table1 = this.tableData(this.oppInfoData, fieldNameApi1);
       this.table2 = this.tableData(this.oppInfoData, fieldNameApi2);
       this.table3 = this.tableData(this.oppInfoData, fieldNameApi3);
@@ -167,7 +167,7 @@ export default class OppAssesment extends LightningElement {
 
             // Assigning the label color according to the value
             if (isChecked === true) {
-              this.labelColor = this.colors(el.label);
+              this.labelColor = this.colors(fieldN, el.label);
               option.push({
                 color: this.labelColor,
                 FieldApiName: fieldN,
@@ -201,7 +201,7 @@ export default class OppAssesment extends LightningElement {
     return data;
   }
 
-  Selected(event) {
+  selected(event) {
     const fields = {};
     const datetime = new Date();
 
@@ -264,8 +264,16 @@ export default class OppAssesment extends LightningElement {
     });
   }
 
-  colors(color) {
-    if (
+  colors(field, color) {
+    if (field === "Degree_of_Risk__c") {
+      if (color === "High") {
+        return "red";
+      } else if (color === "Low") {
+        return "green";
+      } else if (color === "Unsure") {
+        return "yellow";
+      }
+    } else if (
       color === "Defined" ||
       color === "Strong" ||
       color === "Yes" ||
@@ -297,7 +305,7 @@ export default class OppAssesment extends LightningElement {
         // console.log(element1.color);
         console.log(element1.checked);
         element1.checked = event.target.checked;
-        element1.color = this.colors(event.target.value);
+        element1.color = this.colors(element1.FieldApiName, event.target.value);
         //  element1.checked = event.target.checked;
         console.log(element1.color);
         console.log(element1.checked);
